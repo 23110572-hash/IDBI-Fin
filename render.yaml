@@ -10,4 +10,4 @@ services:
       - key: MSME_ENVIRONMENT
         value: production
       - key: MSME_CORS_ORIGINS
-        value: "https://your-frontend-project.vercel.app" # UPDATE THIS in Render Dashboard after Vercel deployment
+        value: "https://idbi-fin.onrender.com"

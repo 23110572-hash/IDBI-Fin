@@ -50,7 +50,7 @@ class Settings(BaseSettings):
     s3_bucket: str = "msme-artifacts-local"
 
     # --- CORS ---
-    cors_origins: str = "http://localhost:5173,http://localhost:3000"
+    cors_origins: str = "https://idbi-fin.onrender.com"
 
     def cors_list(self) -> list[str]:
         return [o.strip() for o in self.cors_origins.split(",") if o.strip()]

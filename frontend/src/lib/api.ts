@@ -7,8 +7,8 @@ import type {
   ScoreResponse,
 } from "./types";
 
-// All calls go through the Vite proxy (/api -> backend). In prod, VITE_API_BASE can override.
-export const api = axios.create({ baseURL: import.meta.env.VITE_API_BASE || "/api" });
+// All calls go directly to the production backend by default.
+export const api = axios.create({ baseURL: import.meta.env.VITE_API_BASE || "https://idbi-fin.onrender.com" });
 
 api.interceptors.request.use((config) => {
   const token = useAuth.getState().token;
