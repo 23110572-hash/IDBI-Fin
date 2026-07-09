@@ -1,0 +1,1714 @@
+{
+  "engine": "optbinning",
+  "features": [
+    "inflow_outflow_ratio",
+    "emi_to_inflow",
+    "days_negative_balance",
+    "cheque_bounce_count",
+    "filing_regularity",
+    "gstr1_vs_3b_mismatch",
+    "electricity_consumption_trend",
+    "delinquency_depth",
+    "gstr1_turnover_trend_24mo",
+    "gstr1_turnover_trend_12mo",
+    "cibil_msme_score",
+    "inflow_volatility_cov",
+    "gstr3b_liability_trend",
+    "customer_concentration_top3",
+    "gst_compliance_rating",
+    "overdraft_utilisation",
+    "epfo_employee_trend_12mo",
+    "epfo_employee_trend_24mo"
+  ],
+  "note": "Parallel RBI-facing transparency scorecard. Does NOT feed the XGBoost PD.",
+  "points_table": [
+    {
+      "Variable": "inflow_outflow_ratio",
+      "Bin": "(-inf, 0.82)",
+      "WoE": -1.7506,
+      "IV": 0.3022,
+      "Coefficient": -0.6627,
+      "Points": -1.3216
+    },
+    {
+      "Variable": "inflow_outflow_ratio",
+      "Bin": "[0.82, 0.90)",
+      "WoE": -1.2046,
+      "IV": 0.1379,
+      "Coefficient": -0.6627,
+      "Points": 8.5343
+    },
+    {
+      "Variable": "inflow_outflow_ratio",
+      "Bin": "[0.90, 0.96)",
+      "WoE": -0.761,
+      "IV": 0.0484,
+      "Coefficient": -0.6627,
+      "Points": 16.5402
+    },
+    {
+      "Variable": "inflow_outflow_ratio",
+      "Bin": "[0.96, 1.02)",
+      "WoE": -0.4629,
+      "IV": 0.0204,
+      "Coefficient": -0.6627,
+      "Points": 21.9223
+    },
+    {
+      "Variable": "inflow_outflow_ratio",
+      "Bin": "[1.02, 1.05)",
+      "WoE": -0.2772,
+      "IV": 0.0046,
+      "Coefficient": -0.6627,
+      "Points": 25.2726
+    },
+    {
+      "Variable": "inflow_outflow_ratio",
+      "Bin": "[1.05, 1.08)",
+      "WoE": 0.0004,
+      "IV": 0.0,
+      "Coefficient": -0.6627,
+      "Points": 30.2837
+    },
+    {
+      "Variable": "inflow_outflow_ratio",
+      "Bin": "[1.08, 1.13)",
+      "WoE": 0.1149,
+      "IV": 0.0011,
+      "Coefficient": -0.6627,
+      "Points": 32.3512
+    },
+    {
+      "Variable": "inflow_outflow_ratio",
+      "Bin": "[1.13, 1.18)",
+      "WoE": 0.4465,
+      "IV": 0.0161,
+      "Coefficient": -0.6627,
+      "Points": 38.335
+    },
+    {
+      "Variable": "inflow_outflow_ratio",
+      "Bin": "[1.18, 1.23)",
+      "WoE": 0.6798,
+      "IV": 0.0263,
+      "Coefficient": -0.6627,
+      "Points": 42.5474
+    },
+    {
+      "Variable": "inflow_outflow_ratio",
+      "Bin": "[1.23, 1.26)",
+      "WoE": 0.8305,
+      "IV": 0.0322,
+      "Coefficient": -0.6627,
+      "Points": 45.2663
+    },
+    {
+      "Variable": "inflow_outflow_ratio",
+      "Bin": "[1.26, 1.32)",
+      "WoE": 1.2458,
+      "IV": 0.0832,
+      "Coefficient": -0.6627,
+      "Points": 52.7618
+    },
+    {
+      "Variable": "inflow_outflow_ratio",
+      "Bin": "[1.32, 1.39)",
+      "WoE": 1.6532,
+      "IV": 0.1304,
+      "Coefficient": -0.6627,
+      "Points": 60.1168
+    },
+    {
+      "Variable": "inflow_outflow_ratio",
+      "Bin": "[1.39, 1.47)",
+      "WoE": 2.1365,
+      "IV": 0.1466,
+      "Coefficient": -0.6627,
+      "Points": 68.8398
+    },
+    {
+      "Variable": "inflow_outflow_ratio",
+      "Bin": "[1.47, inf)",
+      "WoE": 3.0063,
+      "IV": 0.2225,
+      "Coefficient": -0.6627,
+      "Points": 84.5391
+    },
+    {
+      "Variable": "inflow_outflow_ratio",
+      "Bin": "Special",
+      "WoE": 0.0,
+      "IV": 0.0,
+      "Coefficient": -0.6627,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "inflow_outflow_ratio",
+      "Bin": "Missing",
+      "WoE": 0.0,
+      "IV": 0.0,
+      "Coefficient": -0.6627,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "emi_to_inflow",
+      "Bin": "(-inf, 0.02)",
+      "WoE": 2.0438,
+      "IV": 0.1506,
+      "Coefficient": -0.8956,
+      "Points": 80.1305
+    },
+    {
+      "Variable": "emi_to_inflow",
+      "Bin": "[0.02, 0.10)",
+      "WoE": 1.384,
+      "IV": 0.1055,
+      "Coefficient": -0.8956,
+      "Points": 64.037
+    },
+    {
+      "Variable": "emi_to_inflow",
+      "Bin": "[0.10, 0.13)",
+      "WoE": 0.9263,
+      "IV": 0.0322,
+      "Coefficient": -0.8956,
+      "Points": 52.8718
+    },
+    {
+      "Variable": "emi_to_inflow",
+      "Bin": "[0.13, 0.20)",
+      "WoE": 0.7272,
+      "IV": 0.0581,
+      "Coefficient": -0.8956,
+      "Points": 48.0147
+    },
+    {
+      "Variable": "emi_to_inflow",
+      "Bin": "[0.20, 0.23)",
+      "WoE": 0.5315,
+      "IV": 0.0165,
+      "Coefficient": -0.8956,
+      "Points": 43.2409
+    },
+    {
+      "Variable": "emi_to_inflow",
+      "Bin": "[0.23, 0.25)",
+      "WoE": 0.3239,
+      "IV": 0.0051,
+      "Coefficient": -0.8956,
+      "Points": 38.1765
+    },
+    {
+      "Variable": "emi_to_inflow",
+      "Bin": "[0.25, 0.28)",
+      "WoE": 0.1596,
+      "IV": 0.0017,
+      "Coefficient": -0.8956,
+      "Points": 34.1694
+    },
+    {
+      "Variable": "emi_to_inflow",
+      "Bin": "[0.28, 0.30)",
+      "WoE": 0.0476,
+      "IV": 0.0002,
+      "Coefficient": -0.8956,
+      "Points": 31.4375
+    },
+    {
+      "Variable": "emi_to_inflow",
+      "Bin": "[0.30, 0.35)",
+      "WoE": -0.1587,
+      "IV": 0.0028,
+      "Coefficient": -0.8956,
+      "Points": 26.4056
+    },
+    {
+      "Variable": "emi_to_inflow",
+      "Bin": "[0.35, 0.40)",
+      "WoE": -0.519,
+      "IV": 0.0307,
+      "Coefficient": -0.8956,
+      "Points": 17.6176
+    },
+    {
+      "Variable": "emi_to_inflow",
+      "Bin": "[0.40, 0.44)",
+      "WoE": -0.7544,
+      "IV": 0.0388,
+      "Coefficient": -0.8956,
+      "Points": 11.8753
+    },
+    {
+      "Variable": "emi_to_inflow",
+      "Bin": "[0.44, 0.49)",
+      "WoE": -0.8741,
+      "IV": 0.0564,
+      "Coefficient": -0.8956,
+      "Points": 8.9555
+    },
+    {
+      "Variable": "emi_to_inflow",
+      "Bin": "[0.49, inf)",
+      "WoE": -1.3867,
+      "IV": 0.1834,
+      "Coefficient": -0.8956,
+      "Points": -3.5486
+    },
+    {
+      "Variable": "emi_to_inflow",
+      "Bin": "Special",
+      "WoE": 0.0,
+      "IV": 0.0,
+      "Coefficient": -0.8956,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "emi_to_inflow",
+      "Bin": "Missing",
+      "WoE": 0.0,
+      "IV": 0.0,
+      "Coefficient": -0.8956,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "days_negative_balance",
+      "Bin": "(-inf, 0.50)",
+      "WoE": 1.9359,
+      "IV": 0.2959,
+      "Coefficient": -0.5879,
+      "Points": 61.2734
+    },
+    {
+      "Variable": "days_negative_balance",
+      "Bin": "[0.50, 4.50)",
+      "WoE": 1.316,
+      "IV": 0.0851,
+      "Coefficient": -0.5879,
+      "Points": 51.3479
+    },
+    {
+      "Variable": "days_negative_balance",
+      "Bin": "[4.50, 7.50)",
+      "WoE": 0.8529,
+      "IV": 0.0391,
+      "Coefficient": -0.5879,
+      "Points": 43.9324
+    },
+    {
+      "Variable": "days_negative_balance",
+      "Bin": "[7.50, 9.50)",
+      "WoE": 0.8154,
+      "IV": 0.0265,
+      "Coefficient": -0.5879,
+      "Points": 43.3327
+    },
+    {
+      "Variable": "days_negative_balance",
+      "Bin": "[9.50, 11.50)",
+      "WoE": 0.7058,
+      "IV": 0.0206,
+      "Coefficient": -0.5879,
+      "Points": 41.5773
+    },
+    {
+      "Variable": "days_negative_balance",
+      "Bin": "[11.50, 13.50)",
+      "WoE": 0.55,
+      "IV": 0.014,
+      "Coefficient": -0.5879,
+      "Points": 39.0834
+    },
+    {
+      "Variable": "days_negative_balance",
+      "Bin": "[13.50, 16.50)",
+      "WoE": 0.2562,
+      "IV": 0.005,
+      "Coefficient": -0.5879,
+      "Points": 34.3794
+    },
+    {
+      "Variable": "days_negative_balance",
+      "Bin": "[16.50, 18.50)",
+      "WoE": -0.0023,
+      "IV": 0.0,
+      "Coefficient": -0.5879,
+      "Points": 30.2392
+    },
+    {
+      "Variable": "days_negative_balance",
+      "Bin": "[18.50, 20.50)",
+      "WoE": -0.1612,
+      "IV": 0.0015,
+      "Coefficient": -0.5879,
+      "Points": 27.6956
+    },
+    {
+      "Variable": "days_negative_balance",
+      "Bin": "[20.50, 23.50)",
+      "WoE": -0.2902,
+      "IV": 0.0068,
+      "Coefficient": -0.5879,
+      "Points": 25.6304
+    },
+    {
+      "Variable": "days_negative_balance",
+      "Bin": "[23.50, 26.50)",
+      "WoE": -0.3881,
+      "IV": 0.0105,
+      "Coefficient": -0.5879,
+      "Points": 24.0623
+    },
+    {
+      "Variable": "days_negative_balance",
+      "Bin": "[26.50, 29.50)",
+      "WoE": -0.6905,
+      "IV": 0.0329,
+      "Coefficient": -0.5879,
+      "Points": 19.2197
+    },
+    {
+      "Variable": "days_negative_balance",
+      "Bin": "[29.50, 35.50)",
+      "WoE": -0.9719,
+      "IV": 0.0997,
+      "Coefficient": -0.5879,
+      "Points": 14.7148
+    },
+    {
+      "Variable": "days_negative_balance",
+      "Bin": "[35.50, inf)",
+      "WoE": -1.5254,
+      "IV": 0.2437,
+      "Coefficient": -0.5879,
+      "Points": 5.8523
+    },
+    {
+      "Variable": "days_negative_balance",
+      "Bin": "Special",
+      "WoE": 0.0,
+      "IV": 0.0,
+      "Coefficient": -0.5879,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "days_negative_balance",
+      "Bin": "Missing",
+      "WoE": 0.0,
+      "IV": 0.0,
+      "Coefficient": -0.5879,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "cheque_bounce_count",
+      "Bin": "(-inf, 0.50)",
+      "WoE": 1.3254,
+      "IV": 0.3668,
+      "Coefficient": -0.6529,
+      "Points": 53.8427
+    },
+    {
+      "Variable": "cheque_bounce_count",
+      "Bin": "[0.50, 1.50)",
+      "WoE": 0.3496,
+      "IV": 0.0336,
+      "Coefficient": -0.6529,
+      "Points": 36.4927
+    },
+    {
+      "Variable": "cheque_bounce_count",
+      "Bin": "[1.50, 2.50)",
+      "WoE": -0.3882,
+      "IV": 0.0337,
+      "Coefficient": -0.6529,
+      "Points": 23.3746
+    },
+    {
+      "Variable": "cheque_bounce_count",
+      "Bin": "[2.50, inf)",
+      "WoE": -1.2507,
+      "IV": 0.3576,
+      "Coefficient": -0.6529,
+      "Points": 8.0381
+    },
+    {
+      "Variable": "cheque_bounce_count",
+      "Bin": "Special",
+      "WoE": 0.0,
+      "IV": 0.0,
+      "Coefficient": -0.6529,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "cheque_bounce_count",
+      "Bin": "Missing",
+      "WoE": 0.0,
+      "IV": 0.0,
+      "Coefficient": -0.6529,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "filing_regularity",
+      "Bin": "(-inf, 0.55)",
+      "WoE": -1.5815,
+      "IV": 0.2464,
+      "Coefficient": -0.4754,
+      "Points": 9.7997
+    },
+    {
+      "Variable": "filing_regularity",
+      "Bin": "[0.55, 0.60)",
+      "WoE": -1.0632,
+      "IV": 0.0891,
+      "Coefficient": -0.4754,
+      "Points": 16.5098
+    },
+    {
+      "Variable": "filing_regularity",
+      "Bin": "[0.60, 0.64)",
+      "WoE": -0.825,
+      "IV": 0.0483,
+      "Coefficient": -0.4754,
+      "Points": 19.5944
+    },
+    {
+      "Variable": "filing_regularity",
+      "Bin": "[0.64, 0.69)",
+      "WoE": -0.4976,
+      "IV": 0.0322,
+      "Coefficient": -0.4754,
+      "Points": 23.8337
+    },
+    {
+      "Variable": "filing_regularity",
+      "Bin": "[0.69, 0.74)",
+      "WoE": -0.0978,
+      "IV": 0.0012,
+      "Coefficient": -0.4754,
+      "Points": 29.0103
+    },
+    {
+      "Variable": "filing_regularity",
+      "Bin": "[0.74, 0.77)",
+      "WoE": 0.0942,
+      "IV": 0.0008,
+      "Coefficient": -0.4754,
+      "Points": 31.4958
+    },
+    {
+      "Variable": "filing_regularity",
+      "Bin": "[0.77, 0.82)",
+      "WoE": 0.4477,
+      "IV": 0.0204,
+      "Coefficient": -0.4754,
+      "Points": 36.0728
+    },
+    {
+      "Variable": "filing_regularity",
+      "Bin": "[0.82, 0.84)",
+      "WoE": 0.7394,
+      "IV": 0.0237,
+      "Coefficient": -0.4754,
+      "Points": 39.8502
+    },
+    {
+      "Variable": "filing_regularity",
+      "Bin": "[0.84, 0.87)",
+      "WoE": 0.9472,
+      "IV": 0.0412,
+      "Coefficient": -0.4754,
+      "Points": 42.5407
+    },
+    {
+      "Variable": "filing_regularity",
+      "Bin": "[0.87, 0.90)",
+      "WoE": 1.3029,
+      "IV": 0.06,
+      "Coefficient": -0.4754,
+      "Points": 47.1466
+    },
+    {
+      "Variable": "filing_regularity",
+      "Bin": "[0.90, 0.93)",
+      "WoE": 1.4051,
+      "IV": 0.0627,
+      "Coefficient": -0.4754,
+      "Points": 48.4694
+    },
+    {
+      "Variable": "filing_regularity",
+      "Bin": "[0.93, 0.98)",
+      "WoE": 1.6171,
+      "IV": 0.0968,
+      "Coefficient": -0.4754,
+      "Points": 51.2152
+    },
+    {
+      "Variable": "filing_regularity",
+      "Bin": "[0.98, inf)",
+      "WoE": 2.7628,
+      "IV": 0.243,
+      "Coefficient": -0.4754,
+      "Points": 66.0492
+    },
+    {
+      "Variable": "filing_regularity",
+      "Bin": "Special",
+      "WoE": 0.0,
+      "IV": 0.0,
+      "Coefficient": -0.4754,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "filing_regularity",
+      "Bin": "Missing",
+      "WoE": 0.7198,
+      "IV": 0.0052,
+      "Coefficient": -0.4754,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "gstr1_vs_3b_mismatch",
+      "Bin": "(-inf, 0.03)",
+      "WoE": 1.5092,
+      "IV": 0.1717,
+      "Coefficient": -0.6619,
+      "Points": 57.4836
+    },
+    {
+      "Variable": "gstr1_vs_3b_mismatch",
+      "Bin": "[0.03, 0.05)",
+      "WoE": 0.9845,
+      "IV": 0.0489,
+      "Coefficient": -0.6619,
+      "Points": 48.0243
+    },
+    {
+      "Variable": "gstr1_vs_3b_mismatch",
+      "Bin": "[0.05, 0.06)",
+      "WoE": 0.8231,
+      "IV": 0.0249,
+      "Coefficient": -0.6619,
+      "Points": 45.1154
+    },
+    {
+      "Variable": "gstr1_vs_3b_mismatch",
+      "Bin": "[0.06, 0.08)",
+      "WoE": 0.463,
+      "IV": 0.0194,
+      "Coefficient": -0.6619,
+      "Points": 38.6234
+    },
+    {
+      "Variable": "gstr1_vs_3b_mismatch",
+      "Bin": "[0.08, 0.09)",
+      "WoE": 0.3885,
+      "IV": 0.0118,
+      "Coefficient": -0.6619,
+      "Points": 37.2811
+    },
+    {
+      "Variable": "gstr1_vs_3b_mismatch",
+      "Bin": "[0.09, 0.10)",
+      "WoE": 0.2577,
+      "IV": 0.0042,
+      "Coefficient": -0.6619,
+      "Points": 34.9231
+    },
+    {
+      "Variable": "gstr1_vs_3b_mismatch",
+      "Bin": "[0.10, 0.12)",
+      "WoE": 0.1209,
+      "IV": 0.0013,
+      "Coefficient": -0.6619,
+      "Points": 32.4568
+    },
+    {
+      "Variable": "gstr1_vs_3b_mismatch",
+      "Bin": "[0.12, 0.14)",
+      "WoE": -0.2232,
+      "IV": 0.0052,
+      "Coefficient": -0.6619,
+      "Points": 26.2535
+    },
+    {
+      "Variable": "gstr1_vs_3b_mismatch",
+      "Bin": "[0.14, 0.16)",
+      "WoE": -0.4591,
+      "IV": 0.0221,
+      "Coefficient": -0.6619,
+      "Points": 22.0
+    },
+    {
+      "Variable": "gstr1_vs_3b_mismatch",
+      "Bin": "[0.16, 0.17)",
+      "WoE": -0.6129,
+      "IV": 0.0292,
+      "Coefficient": -0.6619,
+      "Points": 19.2274
+    },
+    {
+      "Variable": "gstr1_vs_3b_mismatch",
+      "Bin": "[0.17, 0.20)",
+      "WoE": -0.8254,
+      "IV": 0.0612,
+      "Coefficient": -0.6619,
+      "Points": 15.3966
+    },
+    {
+      "Variable": "gstr1_vs_3b_mismatch",
+      "Bin": "[0.20, inf)",
+      "WoE": -1.2988,
+      "IV": 0.1396,
+      "Coefficient": -0.6619,
+      "Points": 6.8624
+    },
+    {
+      "Variable": "gstr1_vs_3b_mismatch",
+      "Bin": "Special",
+      "WoE": 0.0,
+      "IV": 0.0,
+      "Coefficient": -0.6619,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "gstr1_vs_3b_mismatch",
+      "Bin": "Missing",
+      "WoE": 0.7198,
+      "IV": 0.0052,
+      "Coefficient": -0.6619,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "electricity_consumption_trend",
+      "Bin": "(-inf, -0.05)",
+      "WoE": -0.8981,
+      "IV": 0.0642,
+      "Coefficient": -0.4874,
+      "Points": 18.3556
+    },
+    {
+      "Variable": "electricity_consumption_trend",
+      "Bin": "[-0.05, -0.01)",
+      "WoE": -0.5,
+      "IV": 0.016,
+      "Coefficient": -0.4874,
+      "Points": 23.639
+    },
+    {
+      "Variable": "electricity_consumption_trend",
+      "Bin": "[-0.01, 0.01)",
+      "WoE": -0.4164,
+      "IV": 0.0107,
+      "Coefficient": -0.4874,
+      "Points": 24.7488
+    },
+    {
+      "Variable": "electricity_consumption_trend",
+      "Bin": "[0.01, 0.06)",
+      "WoE": 0.0217,
+      "IV": 0.0001,
+      "Coefficient": -0.4874,
+      "Points": 30.5644
+    },
+    {
+      "Variable": "electricity_consumption_trend",
+      "Bin": "[0.06, 0.09)",
+      "WoE": 0.2602,
+      "IV": 0.0038,
+      "Coefficient": -0.4874,
+      "Points": 33.7306
+    },
+    {
+      "Variable": "electricity_consumption_trend",
+      "Bin": "[0.09, 0.12)",
+      "WoE": 0.5543,
+      "IV": 0.023,
+      "Coefficient": -0.4874,
+      "Points": 37.6349
+    },
+    {
+      "Variable": "electricity_consumption_trend",
+      "Bin": "[0.12, 0.15)",
+      "WoE": 0.6638,
+      "IV": 0.0204,
+      "Coefficient": -0.4874,
+      "Points": 39.0879
+    },
+    {
+      "Variable": "electricity_consumption_trend",
+      "Bin": "[0.15, 0.18)",
+      "WoE": 0.9028,
+      "IV": 0.0294,
+      "Coefficient": -0.4874,
+      "Points": 42.2608
+    },
+    {
+      "Variable": "electricity_consumption_trend",
+      "Bin": "[0.18, inf)",
+      "WoE": 1.4071,
+      "IV": 0.0617,
+      "Coefficient": -0.4874,
+      "Points": 48.9544
+    },
+    {
+      "Variable": "electricity_consumption_trend",
+      "Bin": "Special",
+      "WoE": 0.0,
+      "IV": 0.0,
+      "Coefficient": -0.4874,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "electricity_consumption_trend",
+      "Bin": "Missing",
+      "WoE": -0.0929,
+      "IV": 0.0034,
+      "Coefficient": -0.4874,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "delinquency_depth",
+      "Bin": "(-inf, 7.74)",
+      "WoE": 1.0118,
+      "IV": 0.0561,
+      "Coefficient": -0.7547,
+      "Points": 51.0717
+    },
+    {
+      "Variable": "delinquency_depth",
+      "Bin": "[7.74, 28.31)",
+      "WoE": 0.3504,
+      "IV": 0.0076,
+      "Coefficient": -0.7547,
+      "Points": 37.4793
+    },
+    {
+      "Variable": "delinquency_depth",
+      "Bin": "[28.31, 46.88)",
+      "WoE": -0.2014,
+      "IV": 0.003,
+      "Coefficient": -0.7547,
+      "Points": 26.1375
+    },
+    {
+      "Variable": "delinquency_depth",
+      "Bin": "[46.88, inf)",
+      "WoE": -1.1122,
+      "IV": 0.182,
+      "Coefficient": -0.7547,
+      "Points": 7.4164
+    },
+    {
+      "Variable": "delinquency_depth",
+      "Bin": "Special",
+      "WoE": 0.0,
+      "IV": 0.0,
+      "Coefficient": -0.7547,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "delinquency_depth",
+      "Bin": "Missing",
+      "WoE": 0.1577,
+      "IV": 0.0159,
+      "Coefficient": -0.7547,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "gstr1_turnover_trend_24mo",
+      "Bin": "(-inf, -0.05)",
+      "WoE": -0.9978,
+      "IV": 0.1083,
+      "Coefficient": -0.165,
+      "Points": 25.7916
+    },
+    {
+      "Variable": "gstr1_turnover_trend_24mo",
+      "Bin": "[-0.05, -0.01)",
+      "WoE": -0.642,
+      "IV": 0.0403,
+      "Coefficient": -0.165,
+      "Points": 27.3907
+    },
+    {
+      "Variable": "gstr1_turnover_trend_24mo",
+      "Bin": "[-0.01, 0.01)",
+      "WoE": -0.4972,
+      "IV": 0.0185,
+      "Coefficient": -0.165,
+      "Points": 28.0416
+    },
+    {
+      "Variable": "gstr1_turnover_trend_24mo",
+      "Bin": "[0.01, 0.03)",
+      "WoE": -0.265,
+      "IV": 0.0054,
+      "Coefficient": -0.165,
+      "Points": 29.0854
+    },
+    {
+      "Variable": "gstr1_turnover_trend_24mo",
+      "Bin": "[0.03, 0.07)",
+      "WoE": -0.1124,
+      "IV": 0.002,
+      "Coefficient": -0.165,
+      "Points": 29.7716
+    },
+    {
+      "Variable": "gstr1_turnover_trend_24mo",
+      "Bin": "[0.07, 0.08)",
+      "WoE": 0.0495,
+      "IV": 0.0002,
+      "Coefficient": -0.165,
+      "Points": 30.4989
+    },
+    {
+      "Variable": "gstr1_turnover_trend_24mo",
+      "Bin": "[0.08, 0.11)",
+      "WoE": 0.1772,
+      "IV": 0.0026,
+      "Coefficient": -0.165,
+      "Points": 31.0731
+    },
+    {
+      "Variable": "gstr1_turnover_trend_24mo",
+      "Bin": "[0.11, 0.12)",
+      "WoE": 0.4284,
+      "IV": 0.0115,
+      "Coefficient": -0.165,
+      "Points": 32.2022
+    },
+    {
+      "Variable": "gstr1_turnover_trend_24mo",
+      "Bin": "[0.12, 0.16)",
+      "WoE": 0.5414,
+      "IV": 0.0252,
+      "Coefficient": -0.165,
+      "Points": 32.7102
+    },
+    {
+      "Variable": "gstr1_turnover_trend_24mo",
+      "Bin": "[0.16, 0.18)",
+      "WoE": 0.7224,
+      "IV": 0.0292,
+      "Coefficient": -0.165,
+      "Points": 33.5234
+    },
+    {
+      "Variable": "gstr1_turnover_trend_24mo",
+      "Bin": "[0.18, 0.25)",
+      "WoE": 0.9823,
+      "IV": 0.0617,
+      "Coefficient": -0.165,
+      "Points": 34.6915
+    },
+    {
+      "Variable": "gstr1_turnover_trend_24mo",
+      "Bin": "[0.25, inf)",
+      "WoE": 1.8067,
+      "IV": 0.0817,
+      "Coefficient": -0.165,
+      "Points": 38.397
+    },
+    {
+      "Variable": "gstr1_turnover_trend_24mo",
+      "Bin": "Special",
+      "WoE": 0.0,
+      "IV": 0.0,
+      "Coefficient": -0.165,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "gstr1_turnover_trend_24mo",
+      "Bin": "Missing",
+      "WoE": 0.7198,
+      "IV": 0.0052,
+      "Coefficient": -0.165,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "gstr1_turnover_trend_12mo",
+      "Bin": "(-inf, -0.06)",
+      "WoE": -1.0142,
+      "IV": 0.109,
+      "Coefficient": -0.2134,
+      "Points": 24.3826
+    },
+    {
+      "Variable": "gstr1_turnover_trend_12mo",
+      "Bin": "[-0.06, -0.01)",
+      "WoE": -0.6252,
+      "IV": 0.0466,
+      "Coefficient": -0.2134,
+      "Points": 26.6433
+    },
+    {
+      "Variable": "gstr1_turnover_trend_12mo",
+      "Bin": "[-0.01, 0.02)",
+      "WoE": -0.4104,
+      "IV": 0.0154,
+      "Coefficient": -0.2134,
+      "Points": 27.8917
+    },
+    {
+      "Variable": "gstr1_turnover_trend_12mo",
+      "Bin": "[0.02, 0.04)",
+      "WoE": -0.1974,
+      "IV": 0.0024,
+      "Coefficient": -0.2134,
+      "Points": 29.1293
+    },
+    {
+      "Variable": "gstr1_turnover_trend_12mo",
+      "Bin": "[0.04, 0.07)",
+      "WoE": -0.1204,
+      "IV": 0.0019,
+      "Coefficient": -0.2134,
+      "Points": 29.5768
+    },
+    {
+      "Variable": "gstr1_turnover_trend_12mo",
+      "Bin": "[0.07, 0.09)",
+      "WoE": 0.0388,
+      "IV": 0.0001,
+      "Coefficient": -0.2134,
+      "Points": 30.502
+    },
+    {
+      "Variable": "gstr1_turnover_trend_12mo",
+      "Bin": "[0.09, 0.12)",
+      "WoE": 0.1111,
+      "IV": 0.0011,
+      "Coefficient": -0.2134,
+      "Points": 30.9224
+    },
+    {
+      "Variable": "gstr1_turnover_trend_12mo",
+      "Bin": "[0.12, 0.16)",
+      "WoE": 0.4487,
+      "IV": 0.0227,
+      "Coefficient": -0.2134,
+      "Points": 32.884
+    },
+    {
+      "Variable": "gstr1_turnover_trend_12mo",
+      "Bin": "[0.16, 0.17)",
+      "WoE": 0.5377,
+      "IV": 0.0133,
+      "Coefficient": -0.2134,
+      "Points": 33.4013
+    },
+    {
+      "Variable": "gstr1_turnover_trend_12mo",
+      "Bin": "[0.17, 0.22)",
+      "WoE": 0.7486,
+      "IV": 0.0395,
+      "Coefficient": -0.2134,
+      "Points": 34.6272
+    },
+    {
+      "Variable": "gstr1_turnover_trend_12mo",
+      "Bin": "[0.22, 0.27)",
+      "WoE": 1.1137,
+      "IV": 0.0587,
+      "Coefficient": -0.2134,
+      "Points": 36.7486
+    },
+    {
+      "Variable": "gstr1_turnover_trend_12mo",
+      "Bin": "[0.27, inf)",
+      "WoE": 1.9272,
+      "IV": 0.0905,
+      "Coefficient": -0.2134,
+      "Points": 41.4763
+    },
+    {
+      "Variable": "gstr1_turnover_trend_12mo",
+      "Bin": "Special",
+      "WoE": 0.0,
+      "IV": 0.0,
+      "Coefficient": -0.2134,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "gstr1_turnover_trend_12mo",
+      "Bin": "Missing",
+      "WoE": 0.7198,
+      "IV": 0.0052,
+      "Coefficient": -0.2134,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "cibil_msme_score",
+      "Bin": "(-inf, 606.21)",
+      "WoE": -1.391,
+      "IV": 0.1666,
+      "Coefficient": -0.2898,
+      "Points": 19.297
+    },
+    {
+      "Variable": "cibil_msme_score",
+      "Bin": "[606.21, 653.52)",
+      "WoE": -0.8003,
+      "IV": 0.0524,
+      "Coefficient": -0.2898,
+      "Points": 23.9591
+    },
+    {
+      "Variable": "cibil_msme_score",
+      "Bin": "[653.52, 705.69)",
+      "WoE": -0.0973,
+      "IV": 0.0008,
+      "Coefficient": -0.2898,
+      "Points": 29.5083
+    },
+    {
+      "Variable": "cibil_msme_score",
+      "Bin": "[705.69, 746.98)",
+      "WoE": 0.6462,
+      "IV": 0.0177,
+      "Coefficient": -0.2898,
+      "Points": 35.377
+    },
+    {
+      "Variable": "cibil_msme_score",
+      "Bin": "[746.98, inf)",
+      "WoE": 1.8451,
+      "IV": 0.1194,
+      "Coefficient": -0.2898,
+      "Points": 44.8409
+    },
+    {
+      "Variable": "cibil_msme_score",
+      "Bin": "Special",
+      "WoE": 0.0,
+      "IV": 0.0,
+      "Coefficient": -0.2898,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "cibil_msme_score",
+      "Bin": "Missing",
+      "WoE": 0.1577,
+      "IV": 0.0159,
+      "Coefficient": -0.2898,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "inflow_volatility_cov",
+      "Bin": "(-inf, 0.14)",
+      "WoE": 2.0269,
+      "IV": 0.1227,
+      "Coefficient": -0.1608,
+      "Points": 39.152
+    },
+    {
+      "Variable": "inflow_volatility_cov",
+      "Bin": "[0.14, 0.19)",
+      "WoE": 1.2251,
+      "IV": 0.0532,
+      "Coefficient": -0.1608,
+      "Points": 35.6408
+    },
+    {
+      "Variable": "inflow_volatility_cov",
+      "Bin": "[0.19, 0.22)",
+      "WoE": 0.9336,
+      "IV": 0.0453,
+      "Coefficient": -0.1608,
+      "Points": 34.3646
+    },
+    {
+      "Variable": "inflow_volatility_cov",
+      "Bin": "[0.22, 0.25)",
+      "WoE": 0.6121,
+      "IV": 0.0225,
+      "Coefficient": -0.1608,
+      "Points": 32.9569
+    },
+    {
+      "Variable": "inflow_volatility_cov",
+      "Bin": "[0.25, 0.30)",
+      "WoE": 0.3862,
+      "IV": 0.0196,
+      "Coefficient": -0.1608,
+      "Points": 31.9676
+    },
+    {
+      "Variable": "inflow_volatility_cov",
+      "Bin": "[0.30, 0.34)",
+      "WoE": 0.2265,
+      "IV": 0.006,
+      "Coefficient": -0.1608,
+      "Points": 31.2685
+    },
+    {
+      "Variable": "inflow_volatility_cov",
+      "Bin": "[0.34, 0.35)",
+      "WoE": 0.159,
+      "IV": 0.0013,
+      "Coefficient": -0.1608,
+      "Points": 30.973
+    },
+    {
+      "Variable": "inflow_volatility_cov",
+      "Bin": "[0.35, 0.38)",
+      "WoE": -0.1815,
+      "IV": 0.0027,
+      "Coefficient": -0.1608,
+      "Points": 29.4817
+    },
+    {
+      "Variable": "inflow_volatility_cov",
+      "Bin": "[0.38, 0.42)",
+      "WoE": -0.3802,
+      "IV": 0.0202,
+      "Coefficient": -0.1608,
+      "Points": 28.6118
+    },
+    {
+      "Variable": "inflow_volatility_cov",
+      "Bin": "[0.42, 0.44)",
+      "WoE": -0.5139,
+      "IV": 0.0169,
+      "Coefficient": -0.1608,
+      "Points": 28.0266
+    },
+    {
+      "Variable": "inflow_volatility_cov",
+      "Bin": "[0.44, 0.51)",
+      "WoE": -0.7665,
+      "IV": 0.0697,
+      "Coefficient": -0.1608,
+      "Points": 26.9205
+    },
+    {
+      "Variable": "inflow_volatility_cov",
+      "Bin": "[0.51, inf)",
+      "WoE": -1.051,
+      "IV": 0.0877,
+      "Coefficient": -0.1608,
+      "Points": 25.6746
+    },
+    {
+      "Variable": "inflow_volatility_cov",
+      "Bin": "Special",
+      "WoE": 0.0,
+      "IV": 0.0,
+      "Coefficient": -0.1608,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "inflow_volatility_cov",
+      "Bin": "Missing",
+      "WoE": 0.0,
+      "IV": 0.0,
+      "Coefficient": -0.1608,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "gstr3b_liability_trend",
+      "Bin": "(-inf, -0.04)",
+      "WoE": -0.9514,
+      "IV": 0.114,
+      "Coefficient": -0.2033,
+      "Points": 25.0094
+    },
+    {
+      "Variable": "gstr3b_liability_trend",
+      "Bin": "[-0.04, -0.01)",
+      "WoE": -0.6472,
+      "IV": 0.0354,
+      "Coefficient": -0.2033,
+      "Points": 26.6933
+    },
+    {
+      "Variable": "gstr3b_liability_trend",
+      "Bin": "[-0.01, 0.01)",
+      "WoE": -0.4651,
+      "IV": 0.0147,
+      "Coefficient": -0.2033,
+      "Points": 27.7013
+    },
+    {
+      "Variable": "gstr3b_liability_trend",
+      "Bin": "[0.01, 0.02)",
+      "WoE": -0.3289,
+      "IV": 0.0075,
+      "Coefficient": -0.2033,
+      "Points": 28.4556
+    },
+    {
+      "Variable": "gstr3b_liability_trend",
+      "Bin": "[0.02, 0.06)",
+      "WoE": -0.1144,
+      "IV": 0.0022,
+      "Coefficient": -0.2033,
+      "Points": 29.6433
+    },
+    {
+      "Variable": "gstr3b_liability_trend",
+      "Bin": "[0.06, 0.08)",
+      "WoE": 0.0528,
+      "IV": 0.0002,
+      "Coefficient": -0.2033,
+      "Points": 30.5691
+    },
+    {
+      "Variable": "gstr3b_liability_trend",
+      "Bin": "[0.08, 0.09)",
+      "WoE": 0.2421,
+      "IV": 0.0031,
+      "Coefficient": -0.2033,
+      "Points": 31.617
+    },
+    {
+      "Variable": "gstr3b_liability_trend",
+      "Bin": "[0.09, 0.11)",
+      "WoE": 0.3892,
+      "IV": 0.0136,
+      "Coefficient": -0.2033,
+      "Points": 32.4314
+    },
+    {
+      "Variable": "gstr3b_liability_trend",
+      "Bin": "[0.11, 0.15)",
+      "WoE": 0.607,
+      "IV": 0.0344,
+      "Coefficient": -0.2033,
+      "Points": 33.6373
+    },
+    {
+      "Variable": "gstr3b_liability_trend",
+      "Bin": "[0.15, 0.18)",
+      "WoE": 0.7067,
+      "IV": 0.0331,
+      "Coefficient": -0.2033,
+      "Points": 34.189
+    },
+    {
+      "Variable": "gstr3b_liability_trend",
+      "Bin": "[0.18, 0.22)",
+      "WoE": 1.1646,
+      "IV": 0.0449,
+      "Coefficient": -0.2033,
+      "Points": 36.7241
+    },
+    {
+      "Variable": "gstr3b_liability_trend",
+      "Bin": "[0.22, inf)",
+      "WoE": 1.7737,
+      "IV": 0.0823,
+      "Coefficient": -0.2033,
+      "Points": 40.0967
+    },
+    {
+      "Variable": "gstr3b_liability_trend",
+      "Bin": "Special",
+      "WoE": 0.0,
+      "IV": 0.0,
+      "Coefficient": -0.2033,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "gstr3b_liability_trend",
+      "Bin": "Missing",
+      "WoE": 0.7198,
+      "IV": 0.0052,
+      "Coefficient": -0.2033,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "customer_concentration_top3",
+      "Bin": "(-inf, 0.17)",
+      "WoE": 1.1775,
+      "IV": 0.0502,
+      "Coefficient": -0.1966,
+      "Points": 36.5807
+    },
+    {
+      "Variable": "customer_concentration_top3",
+      "Bin": "[0.17, 0.23)",
+      "WoE": 0.6936,
+      "IV": 0.0208,
+      "Coefficient": -0.1966,
+      "Points": 33.99
+    },
+    {
+      "Variable": "customer_concentration_top3",
+      "Bin": "[0.23, 0.33)",
+      "WoE": 0.6438,
+      "IV": 0.0584,
+      "Coefficient": -0.1966,
+      "Points": 33.7235
+    },
+    {
+      "Variable": "customer_concentration_top3",
+      "Bin": "[0.33, 0.37)",
+      "WoE": 0.3247,
+      "IV": 0.0079,
+      "Coefficient": -0.1966,
+      "Points": 32.0149
+    },
+    {
+      "Variable": "customer_concentration_top3",
+      "Bin": "[0.37, 0.42)",
+      "WoE": 0.1273,
+      "IV": 0.0017,
+      "Coefficient": -0.1966,
+      "Points": 30.9581
+    },
+    {
+      "Variable": "customer_concentration_top3",
+      "Bin": "[0.42, 0.47)",
+      "WoE": -0.0,
+      "IV": 0.0,
+      "Coefficient": -0.1966,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "customer_concentration_top3",
+      "Bin": "[0.47, 0.50)",
+      "WoE": -0.1633,
+      "IV": 0.0018,
+      "Coefficient": -0.1966,
+      "Points": 29.4023
+    },
+    {
+      "Variable": "customer_concentration_top3",
+      "Bin": "[0.50, 0.55)",
+      "WoE": -0.2798,
+      "IV": 0.0096,
+      "Coefficient": -0.1966,
+      "Points": 28.7788
+    },
+    {
+      "Variable": "customer_concentration_top3",
+      "Bin": "[0.55, 0.63)",
+      "WoE": -0.4571,
+      "IV": 0.0283,
+      "Coefficient": -0.1966,
+      "Points": 27.8293
+    },
+    {
+      "Variable": "customer_concentration_top3",
+      "Bin": "[0.63, inf)",
+      "WoE": -0.7317,
+      "IV": 0.0684,
+      "Coefficient": -0.1966,
+      "Points": 26.3593
+    },
+    {
+      "Variable": "customer_concentration_top3",
+      "Bin": "Special",
+      "WoE": 0.0,
+      "IV": 0.0,
+      "Coefficient": -0.1966,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "customer_concentration_top3",
+      "Bin": "Missing",
+      "WoE": 0.0,
+      "IV": 0.0,
+      "Coefficient": -0.1966,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "gst_compliance_rating",
+      "Bin": "(-inf, 55.55)",
+      "WoE": -1.4035,
+      "IV": 0.2459,
+      "Coefficient": -0.0713,
+      "Points": 27.5517
+    },
+    {
+      "Variable": "gst_compliance_rating",
+      "Bin": "[55.55, 60.21)",
+      "WoE": -0.9016,
+      "IV": 0.0584,
+      "Coefficient": -0.0713,
+      "Points": 28.5263
+    },
+    {
+      "Variable": "gst_compliance_rating",
+      "Bin": "[60.21, 64.69)",
+      "WoE": -0.6476,
+      "IV": 0.037,
+      "Coefficient": -0.0713,
+      "Points": 29.0194
+    },
+    {
+      "Variable": "gst_compliance_rating",
+      "Bin": "[64.69, 70.23)",
+      "WoE": -0.3208,
+      "IV": 0.0126,
+      "Coefficient": -0.0713,
+      "Points": 29.6538
+    },
+    {
+      "Variable": "gst_compliance_rating",
+      "Bin": "[70.23, 74.85)",
+      "WoE": -0.0567,
+      "IV": 0.0004,
+      "Coefficient": -0.0713,
+      "Points": 30.1664
+    },
+    {
+      "Variable": "gst_compliance_rating",
+      "Bin": "[74.85, 77.97)",
+      "WoE": 0.1531,
+      "IV": 0.0017,
+      "Coefficient": -0.0713,
+      "Points": 30.5737
+    },
+    {
+      "Variable": "gst_compliance_rating",
+      "Bin": "[77.97, 80.06)",
+      "WoE": 0.3103,
+      "IV": 0.0044,
+      "Coefficient": -0.0713,
+      "Points": 30.8789
+    },
+    {
+      "Variable": "gst_compliance_rating",
+      "Bin": "[80.06, 84.97)",
+      "WoE": 0.5651,
+      "IV": 0.0301,
+      "Coefficient": -0.0713,
+      "Points": 31.3736
+    },
+    {
+      "Variable": "gst_compliance_rating",
+      "Bin": "[84.97, 88.87)",
+      "WoE": 0.8617,
+      "IV": 0.0454,
+      "Coefficient": -0.0713,
+      "Points": 31.9494
+    },
+    {
+      "Variable": "gst_compliance_rating",
+      "Bin": "[88.87, 92.47)",
+      "WoE": 1.0401,
+      "IV": 0.0502,
+      "Coefficient": -0.0713,
+      "Points": 32.2958
+    },
+    {
+      "Variable": "gst_compliance_rating",
+      "Bin": "[92.47, 98.43)",
+      "WoE": 1.5433,
+      "IV": 0.1228,
+      "Coefficient": -0.0713,
+      "Points": 33.2727
+    },
+    {
+      "Variable": "gst_compliance_rating",
+      "Bin": "[98.43, inf)",
+      "WoE": 2.2032,
+      "IV": 0.1682,
+      "Coefficient": -0.0713,
+      "Points": 34.5538
+    },
+    {
+      "Variable": "gst_compliance_rating",
+      "Bin": "Special",
+      "WoE": 0.0,
+      "IV": 0.0,
+      "Coefficient": -0.0713,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "gst_compliance_rating",
+      "Bin": "Missing",
+      "WoE": 0.7198,
+      "IV": 0.0052,
+      "Coefficient": -0.0713,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "overdraft_utilisation",
+      "Bin": "(-inf, 0.10)",
+      "WoE": 1.2494,
+      "IV": 0.0645,
+      "Coefficient": -0.2279,
+      "Points": 38.0307
+    },
+    {
+      "Variable": "overdraft_utilisation",
+      "Bin": "[0.10, 0.17)",
+      "WoE": 0.8773,
+      "IV": 0.0292,
+      "Coefficient": -0.2279,
+      "Points": 35.7215
+    },
+    {
+      "Variable": "overdraft_utilisation",
+      "Bin": "[0.17, 0.23)",
+      "WoE": 0.6511,
+      "IV": 0.0239,
+      "Coefficient": -0.2279,
+      "Points": 34.3177
+    },
+    {
+      "Variable": "overdraft_utilisation",
+      "Bin": "[0.23, 0.32)",
+      "WoE": 0.474,
+      "IV": 0.0248,
+      "Coefficient": -0.2279,
+      "Points": 33.2183
+    },
+    {
+      "Variable": "overdraft_utilisation",
+      "Bin": "[0.32, 0.41)",
+      "WoE": 0.1336,
+      "IV": 0.0027,
+      "Coefficient": -0.2279,
+      "Points": 31.1057
+    },
+    {
+      "Variable": "overdraft_utilisation",
+      "Bin": "[0.41, 0.44)",
+      "WoE": -0.001,
+      "IV": 0.0,
+      "Coefficient": -0.2279,
+      "Points": 30.2704
+    },
+    {
+      "Variable": "overdraft_utilisation",
+      "Bin": "[0.44, 0.50)",
+      "WoE": -0.0729,
+      "IV": 0.0005,
+      "Coefficient": -0.2279,
+      "Points": 29.8242
+    },
+    {
+      "Variable": "overdraft_utilisation",
+      "Bin": "[0.50, 0.59)",
+      "WoE": -0.1666,
+      "IV": 0.0042,
+      "Coefficient": -0.2279,
+      "Points": 29.2427
+    },
+    {
+      "Variable": "overdraft_utilisation",
+      "Bin": "[0.59, 0.63)",
+      "WoE": -0.3014,
+      "IV": 0.0058,
+      "Coefficient": -0.2279,
+      "Points": 28.406
+    },
+    {
+      "Variable": "overdraft_utilisation",
+      "Bin": "[0.63, 0.75)",
+      "WoE": -0.5351,
+      "IV": 0.0352,
+      "Coefficient": -0.2279,
+      "Points": 26.9553
+    },
+    {
+      "Variable": "overdraft_utilisation",
+      "Bin": "[0.75, inf)",
+      "WoE": -0.9131,
+      "IV": 0.07,
+      "Coefficient": -0.2279,
+      "Points": 24.6095
+    },
+    {
+      "Variable": "overdraft_utilisation",
+      "Bin": "Special",
+      "WoE": 0.0,
+      "IV": 0.0,
+      "Coefficient": -0.2279,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "overdraft_utilisation",
+      "Bin": "Missing",
+      "WoE": 0.0,
+      "IV": 0.0,
+      "Coefficient": -0.2279,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "epfo_employee_trend_12mo",
+      "Bin": "(-inf, 0.05)",
+      "WoE": -0.6244,
+      "IV": 0.0306,
+      "Coefficient": -0.4044,
+      "Points": 23.3992
+    },
+    {
+      "Variable": "epfo_employee_trend_12mo",
+      "Bin": "[0.05, 0.12)",
+      "WoE": 0.2012,
+      "IV": 0.0023,
+      "Coefficient": -0.4044,
+      "Points": 32.492
+    },
+    {
+      "Variable": "epfo_employee_trend_12mo",
+      "Bin": "[0.12, inf)",
+      "WoE": 1.3887,
+      "IV": 0.083,
+      "Coefficient": -0.4044,
+      "Points": 45.5709
+    },
+    {
+      "Variable": "epfo_employee_trend_12mo",
+      "Bin": "Special",
+      "WoE": 0.0,
+      "IV": 0.0,
+      "Coefficient": -0.4044,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "epfo_employee_trend_12mo",
+      "Bin": "Missing",
+      "WoE": -0.0273,
+      "IV": 0.0006,
+      "Coefficient": -0.4044,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "epfo_employee_trend_24mo",
+      "Bin": "(-inf, 0.04)",
+      "WoE": -0.61,
+      "IV": 0.0281,
+      "Coefficient": -0.2291,
+      "Points": 26.4706
+    },
+    {
+      "Variable": "epfo_employee_trend_24mo",
+      "Bin": "[0.04, 0.10)",
+      "WoE": 0.0855,
+      "IV": 0.0004,
+      "Coefficient": -0.2291,
+      "Points": 30.8099
+    },
+    {
+      "Variable": "epfo_employee_trend_24mo",
+      "Bin": "[0.10, inf)",
+      "WoE": 1.2308,
+      "IV": 0.0787,
+      "Coefficient": -0.2291,
+      "Points": 37.9566
+    },
+    {
+      "Variable": "epfo_employee_trend_24mo",
+      "Bin": "Special",
+      "WoE": 0.0,
+      "IV": 0.0,
+      "Coefficient": -0.2291,
+      "Points": 30.2766
+    },
+    {
+      "Variable": "epfo_employee_trend_24mo",
+      "Bin": "Missing",
+      "WoE": -0.0273,
+      "IV": 0.0006,
+      "Coefficient": -0.2291,
+      "Points": 30.2766
+    }
+  ]
+}

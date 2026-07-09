@@ -1,0 +1,31 @@
+# Core (required for generate + train + evaluate)
+numpy==1.26.4
+pandas==2.2.2
+scipy==1.13.1
+scikit-learn==1.6.1          # 1.6.x: satisfies ropwr>=1.6 AND still exposes force_all_finite for optbinning 0.19
+xgboost==2.0.3
+pyarrow==15.0.2
+joblib==1.4.2
+setuptools==69.5.1           # provides pkg_resources for mlflow on py3.12 venvs
+
+# Explainability + scorecard (required for SHAP sub-scores + WOE)
+shap==0.45.1
+optbinning==0.19.0
+ortools==9.8.3296            # protobuf 4.x build -> coexists with mlflow (avoids protobuf 6.x clash)
+protobuf==4.25.3
+
+# MLflow experiment tracking (spec requirement)
+mlflow==2.13.0
+
+# Optional (guarded imports — pipeline degrades gracefully if absent)
+great-expectations==0.18.15
+fairlearn==0.10.0
+lifelines==0.28.0
+matplotlib==3.8.4
+
+# Dev / quality
+pytest==8.2.2
+ruff==0.4.9
+
+# NOTE on native load order: on Windows/py3.12, importing `shap` before `optbinning` triggers an
+# OpenMP DLL clash. msme_ml/__init__.py pre-imports optbinning to force the safe order.

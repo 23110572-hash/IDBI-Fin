@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-slate-50 text-ink antialiased;
+}
+
+.card {
+  @apply bg-white rounded-2xl shadow-lg border border-slate-200/50;
+  box-shadow: 0 10px 15px -3px rgba(0, 131, 108, 0.05), 0 4px 6px -4px rgba(0, 131, 108, 0.05);
+}
+
+.btn {
+  @apply inline-flex items-center justify-center rounded-xl px-4 py-2 font-medium transition-all duration-300;
+}
+.btn-primary {
+  @apply btn text-white disabled:opacity-50 disabled:hover:shadow-none;
+  background: linear-gradient(to right, #00836C, rgba(0, 131, 108, 0.9));
+  box-shadow: 0 4px 14px 0 rgba(0, 131, 108, 0.2);
+}
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(to right, rgba(0, 131, 108, 0.9), rgba(0, 131, 108, 0.8));
+  box-shadow: 0 6px 20px rgba(0, 131, 108, 0.3);
+}
+.btn-ghost {
+  @apply btn text-slate-600 hover:bg-slate-100 hover:text-slate-900;
+}
+.input {
+  @apply w-full rounded-xl border border-slate-300 px-4 py-2.5 focus:outline-none transition-all;
+}
+.input:focus {
+  border-color: #00836C;
+  box-shadow: 0 0 0 2px rgba(0, 131, 108, 0.2);
+}
+.label {
+  @apply block text-sm font-medium text-slate-700 mb-1.5;
+}

@@ -1,0 +1,10 @@
+# Repo-wide ruff config (used when linting from the repo root, e.g. CI backend lint).
+line-length = 120
+target-version = "py311"
+
+[lint]
+select = ["E", "F", "I", "UP", "B", "W"]
+ignore = ["B008", "E741"]
+
+[lint.per-file-ignores]
+"__init__.py" = ["E402", "F401"]
