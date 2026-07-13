@@ -12,7 +12,7 @@ router = APIRouter(tags=["alerts"])
 
 
 class AlertHub:
-    """In-process pub/sub for live alerts (WebSocket). Redis pub/sub in production."""
+    """In-process pub/sub that streams live alerts to connected dashboards over WebSocket."""
 
     def __init__(self):
         self._clients: set[WebSocket] = set()

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function Login() {
   const setAuth = useAuth((s) => s.setAuth);
-  const [username, setUsername] = useState("rm");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
@@ -44,10 +44,11 @@ export default function Login() {
         <form onSubmit={submit} className="space-y-5">
           <div>
             <label className="label">Username</label>
-            <input 
-              className="input bg-white/60 hover:bg-white focus:bg-white transition-colors" 
-              value={username} 
-              onChange={(e) => setUsername(e.target.value)} 
+            <input
+              className="input bg-white/60 hover:bg-white focus:bg-white transition-colors"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              autoComplete="username"
             />
           </div>
           <div>
@@ -57,7 +58,7 @@ export default function Login() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="rm123! (dev)"
+              autoComplete="current-password"
             />
           </div>
           {error && <div className="text-red-600 text-sm font-semibold text-center p-3 bg-red-50 border border-red-100 rounded-xl">{error}</div>}
@@ -65,7 +66,13 @@ export default function Login() {
             {busy ? "Authenticating…" : "Sign In to Portal"}
           </button>
         </form>
-        
+
+        <p className="text-center text-sm text-slate-500 mt-6">
+          New to IDBI Fin?{" "}
+          <Link to="/signup" className="font-bold text-[#00836C] hover:text-[#006654] transition-colors">
+            Create an account
+          </Link>
+        </p>
       </div>
     </div>
   );

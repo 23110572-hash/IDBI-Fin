@@ -1,12 +1,9 @@
-"""Electricity-bill OCR behind an interface. AWS Textract in production; a local regex extractor
-for standalone dev so the app runs without live AWS."""
+"""Electricity-bill OCR. A lightweight regex extractor pulls the units-consumed, sanctioned load,
+and bill amount from an uploaded power bill (text). Kept behind a small interface so a heavier OCR
+engine can be swapped in later without touching callers."""
 from __future__ import annotations
 
 import re
-
-from .config import get_settings
-
-_settings = get_settings()
 
 _UNITS_RE = re.compile(r"Units\s+Consumed[:\s]+([\d,]+)", re.IGNORECASE)
 _LOAD_RE = re.compile(r"Sanctioned\s+Load[:\s]+([\d.]+)", re.IGNORECASE)
@@ -15,8 +12,6 @@ _AMOUNT_RE = re.compile(r"Bill\s+Amount[:\s]+Rs\.?\s*([\d,]+\.?\d*)", re.IGNOREC
 
 def extract_bill(content: bytes, content_type: str = "text/plain") -> dict:
     """Return structured fields from an uploaded power bill."""
-    if _settings.use_textract:
-        return _textract_extract(content, content_type)
     return _local_extract(content)
 
 
@@ -38,14 +33,3 @@ def _local_extract(content: bytes) -> dict:
         "bill_amount": _num(amount),
         "extracted_ok": kwh is not None,
     }
-
-
-def _textract_extract(content: bytes, content_type: str) -> dict:  # pragma: no cover
-    """AWS Textract path (used when MSME_USE_TEXTRACT=true and creds are configured)."""
-    import boto3
-
-    client = boto3.client("textract")
-    resp = client.analyze_document(Document={"Bytes": content},
-                                   FeatureTypes=["FORMS"])
-    text = " ".join(b.get("Text", "") for b in resp.get("Blocks", []) if b.get("BlockType") == "LINE")
-    return _local_extract(text.encode())

@@ -18,7 +18,7 @@ export const useAuth = create<AuthState>()(
       setAuth: (token, role, username) => set({ token, role, username }),
       logout: () => set({ token: null, role: null, username: null }),
     }),
-    { name: "msme-auth" }
+    { name: "idbifin-auth" }
   )
 );
 

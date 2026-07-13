@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { useAuth } from "./lib/store";
 import Login from "./components/Login";
+import Signup from "./components/Signup";
 import Layout from "./components/Layout";
 import NewApplication from "./components/NewApplication";
 import PortfolioHeatMap from "./components/PortfolioHeatMap";
@@ -16,6 +17,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     );

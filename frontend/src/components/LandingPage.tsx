@@ -11,8 +11,11 @@ export default function LandingPage() {
               <img src="/logo.png" alt="IDBI Fin Logo" className="h-28 w-auto object-contain drop-shadow-sm group-hover:drop-shadow-md transition-all duration-300" />
             </div>
             <div className="flex items-center gap-4">
-              <Link to="/login" className="btn text-white bg-gradient-to-r from-[#F58220] to-[#f79d4f] hover:from-[#e37113] hover:to-[#F58220] shadow-lg shadow-[#F58220]/30 hover:shadow-[#F58220]/50 hover:scale-105 transition-all px-6 py-2.5 rounded-full font-bold text-sm">
-                Launch Portal
+              <Link to="/login" className="text-sm font-bold text-slate-600 hover:text-[#00836C] transition-colors px-2">
+                Sign In
+              </Link>
+              <Link to="/signup" className="btn text-white bg-gradient-to-r from-[#F58220] to-[#f79d4f] hover:from-[#e37113] hover:to-[#F58220] shadow-lg shadow-[#F58220]/30 hover:shadow-[#F58220]/50 hover:scale-105 transition-all px-6 py-2.5 rounded-full font-bold text-sm">
+                Get Started
               </Link>
             </div>
           </div>
@@ -42,8 +45,8 @@ export default function LandingPage() {
             The most advanced credit intelligence platform tailored for NTC and NTB borrowers. Turn raw banking data into confident lending decisions.
           </p>
           <div className="flex justify-center gap-4 animate-fade-in-up">
-            <Link to="/login" className="btn text-white bg-gradient-to-r from-[#00836C] to-[#006654] hover:scale-105 text-lg px-8 py-3 rounded-full shadow-xl shadow-[#00836C]/30 hover:shadow-[#00836C]/50 transition-all duration-300 font-bold">
-              Launch Portal
+            <Link to="/signup" className="btn text-white bg-gradient-to-r from-[#00836C] to-[#006654] hover:scale-105 text-lg px-8 py-3 rounded-full shadow-xl shadow-[#00836C]/30 hover:shadow-[#00836C]/50 transition-all duration-300 font-bold">
+              Get Started
             </Link>
             <a href="#features" className="btn-ghost text-lg px-8 py-3 rounded-full border border-slate-200 hover:border-[#00836C]/30 hover:bg-[#00836C]/5 hover:text-[#00836C] transition-all duration-300 font-bold">
               Explore Features

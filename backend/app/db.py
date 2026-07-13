@@ -1,5 +1,5 @@
-"""Database engine/session (SQLAlchemy 2.0). Postgres in docker-compose; SQLite file fallback
-for standalone local dev."""
+"""Database engine/session (SQLAlchemy 2.0). Neon Postgres via MSME_DATABASE_URL. The test suite
+points MSME_DATABASE_URL at an isolated SQLite file."""
 from __future__ import annotations
 
 from collections.abc import Iterator
@@ -11,6 +11,12 @@ from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 from .config import get_settings
 
 _settings = get_settings()
+
+if not _settings.database_url:
+    raise RuntimeError(
+        "MSME_DATABASE_URL is not set. Provide the Neon Postgres connection string "
+        "(postgresql+psycopg2://...) via the environment or the repo-root .env file."
+    )
 
 _connect_args = {"check_same_thread": False} if _settings.database_url.startswith("sqlite") else {}
 engine = create_engine(_settings.database_url, connect_args=_connect_args, pool_pre_ping=True,

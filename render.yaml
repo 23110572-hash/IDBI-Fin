@@ -9,5 +9,13 @@ services:
         value: 3.11.0
       - key: MSME_ENVIRONMENT
         value: production
+      # Allowed frontend origin(s) for CORS — the deployed Vercel URL (comma-separated).
       - key: MSME_CORS_ORIGINS
-        value: "https://idbi-fin.onrender.com"
+        value: "https://idbi-fin.vercel.app"
+      # Neon Postgres connection string (postgresql+psycopg2://...). Set this in the Render
+      # dashboard — it is a secret and is never committed.
+      - key: MSME_DATABASE_URL
+        sync: false
+      # JWT signing key — Render generates a strong random value on first deploy.
+      - key: MSME_JWT_SECRET
+        generateValue: true

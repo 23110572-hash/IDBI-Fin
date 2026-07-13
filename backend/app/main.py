@@ -62,8 +62,8 @@ app = FastAPI(
     title=_settings.app_name,
     version="0.1.0",
     description=(
-        "MSME Financial Health Card — single XGBoost decision model (Score = 100·(1−PD)), SHAP "
-        "reason codes + 5 grouped sub-scores, parallel WOE scorecard, AA-first / OCEN-compliant. "
+        "IDBIFin — MSME credit health scoring. Single XGBoost decision model (Score = 100·(1−PD)), "
+        "SHAP reason codes + 5 grouped sub-scores, parallel WOE scorecard, AA-first / OCEN-compliant. "
         "Two modes: A (origination, real-time) and B (portfolio monitoring, batch)."
     ),
     lifespan=lifespan,

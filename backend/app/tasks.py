@@ -5,7 +5,8 @@
   * Mode B (portfolio monitoring): daily AA delta / monthly full recompute / quarterly retrain,
     scheduled via Celery beat. These run ONLY for already-disbursed borrowers.
 
-When no broker/worker is present, `task_always_eager=True` runs tasks inline so local dev works.
+Tasks run inline (`task_always_eager=True`) via an in-memory broker, so no external queue is
+required in this deployment.
 """
 from __future__ import annotations
 
@@ -18,7 +19,7 @@ from .config import get_settings
 
 _settings = get_settings()
 
-celery_app = Celery("msme", broker=_settings.celery_broker_url,
+celery_app = Celery("idbifin", broker=_settings.celery_broker_url,
                     backend=_settings.celery_result_backend)
 celery_app.conf.update(
     task_always_eager=_settings.celery_task_always_eager,
@@ -98,5 +99,5 @@ def mode_b_monthly_recompute() -> dict:
 
 @celery_app.task(name="app.tasks.mode_b_quarterly_retrain")
 def mode_b_quarterly_retrain() -> dict:
-    """Placeholder hook: production triggers a SageMaker retrain + PSI review job."""
-    return {"status": "retrain_trigger_recorded", "note": "wired to MLOps pipeline in production"}
+    """Placeholder hook: a production build would trigger a retrain + PSI review job."""
+    return {"status": "retrain_trigger_recorded", "note": "wired to the retrain pipeline in production"}

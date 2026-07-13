@@ -25,9 +25,15 @@ def client():
 
 @pytest.fixture(scope="module")
 def rm_headers(client):
-    r = client.post("/auth/login", data={"username": "rm", "password": "rm123!"})
-    assert r.status_code == 200
-    return {"Authorization": f"Bearer {r.json()['access_token']}"}
+    creds = {"username": "test_rm", "password": "Test123!"}
+    reg = client.post("/auth/register", json={**creds, "role": "rm"})
+    if reg.status_code == 201:
+        token = reg.json()["access_token"]
+    else:  # already registered from a previous run — fall back to login
+        login = client.post("/auth/login", data=creds)
+        assert login.status_code == 200, reg.text
+        token = login.json()["access_token"]
+    return {"Authorization": f"Bearer {token}"}
 
 
 def test_healthz(client):

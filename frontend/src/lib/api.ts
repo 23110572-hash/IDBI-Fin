@@ -39,6 +39,11 @@ export async function login(username: string, password: string) {
   return data as { access_token: string; role: string; expires_in: number };
 }
 
+export async function register(username: string, password: string, role: string) {
+  const { data } = await api.post("/auth/register", { username, password, role });
+  return data as { access_token: string; role: string; expires_in: number };
+}
+
 export async function createConsent(identifiers: Identifiers) {
   const { data } = await api.post("/consent", { identifiers });
   return data as { consent_id: string; consent_handle: string; status: string };

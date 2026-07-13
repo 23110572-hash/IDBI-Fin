@@ -1,110 +1,137 @@
-# MSME Financial Health Card
+# IDBIFin
 
-> **IDBI Innovate 2026 — Track 03 (Financial Health Score).**
-> An AI/ML system that scores New-to-Credit (NTC) and New-to-Bank (NTB) Indian MSMEs using
-> **alternate data** (GST, UPI, Account Aggregator bank statements, EPFO, electricity), producing a
-> 0–100 credit-health score with 5 pillar sub-scores, top-5 SHAP reason codes, and a parallel
-> WOE regulatory scorecard — exposed via APIs and an RM dashboard.
+**AI-powered credit intelligence for India's MSMEs.**
 
-The authoritative design specs are [`architecture.md`](./architecture.md) and [`tech.md`](./tech.md).
+IDBIFin turns everyday business data into a clear, trustworthy credit decision. It scores
+New-to-Credit (NTC) and New-to-Bank (NTB) micro, small, and medium enterprises using the data they
+already generate — GST filings, UPI activity, bank statements shared through the Account Aggregator
+framework, EPFO records, and electricity usage — and returns a 0–100 financial health score in
+seconds, complete with the reasons behind every decision.
 
----
-
-## Core design (finalized — do not deviate)
-
-- **Single XGBoost decision model** → one probability of default (PD). **PDs are never blended.**
-- **`Score = 100·(1 − PD)`** → mapped to 6 risk tiers.
-- **SHAP (TreeExplainer)** does two jobs: (a) top-5 actionable reason codes; (b) the **5 sub-scores**
-  = SHAP contributions grouped by category, normalised 0–100 (pillars always agree with composite).
-- **WOE Logistic scorecard (OptBinning)** is a **parallel, regulator-facing** transparency artifact.
-  It does **NOT** feed into or alter the PD.
-- **Dynamic pillar weighting is a DASHBOARD concern only** — the trained model is never re-weighted
-  at inference. The dashboard renormalises *displayed* pillar weights to sum to 100% when a pillar
-  is empty (e.g. NTC → Bureau 10% redistributes +6% Cash Flow / +4% GST).
-- **AA-first, ULI-ready**; **OCEN-compliant** output endpoint; electricity is **async OCR**, off the
-  <30s critical path.
-- **Two separated modes:** A (origination, real-time) and B (portfolio monitoring, batch).
+Repository: <https://github.com/23110572-hash/IDBI-Fin>
 
 ---
 
-## Monorepo layout
+## The opportunity
 
-```
-/ml         Python: synthetic data generator, feature pipeline, seven-gate selection,
-            XGBoost training, SHAP, WOE scorecard, evaluation, MLflow
-/backend    Python 3.11 + FastAPI: scoring API, OCEN API, orchestrator, connectors,
-            consent svc, alert svc, persistence (Postgres/SQLite), auth.
-            Ships the trained model in backend/model_artifacts (served directly).
-/frontend   React + TypeScript + Vite + Tailwind + Recharts + D3: RM dashboard (3 views)
-/data       generated synthetic datasets + data dictionary + provenance + label logic
-/docs       kept in sync with architecture.md / tech.md
-```
+India has more than 63 million MSMEs. They power roughly a third of the economy and nearly half of
+exports, yet most of them are effectively invisible to traditional credit systems. They have no
+bureau history, no audited statements, and no collateral — so lenders either decline them or spend
+days on manual underwriting. The result is a financing gap estimated in the tens of lakhs of crores
+of rupees.
 
-## Deployment
-
-- **Frontend → Vercel.** Root `frontend/`, build `npm run build`, output `dist/`. Set
-  `VITE_API_BASE` to the Render backend URL.
-- **Backend → Render.** Root = repo root. Build: `pip install ./ml && pip install -r backend/requirements.txt`.
-  Start: `uvicorn app.main:app --host 0.0.0.0 --port $PORT --app-dir backend`. Set `MSME_DATABASE_URL`
-  to the Neon connection string and `MSME_JWT_SECRET` to a strong secret.
-- **Database → Neon (Postgres).** Create a database and paste its `postgresql+psycopg2://...` URL
-  into the backend's `MSME_DATABASE_URL`. Tables are created automatically on startup.
+IDBIFin closes that gap. It reads the signals a healthy business already produces and translates
+them into a decision a lender can act on with confidence — instantly, transparently, and within the
+rules.
 
 ---
 
-## Quick start (local, end-to-end)
+## What IDBIFin delivers
 
-### 0. Prerequisites
-- Python 3.11+ (3.12 works), Node 18+, and (optional) Docker + docker-compose.
-
-### Windows — one command
-
-```bat
-start.bat
-```
-
-First run installs dependencies; every run launches the backend (:8000) + frontend (:5173) and
-opens Chrome. Sign in as `rm / rm123!`. The trained model is **bundled** in
-`backend/model_artifacts/`, so there is nothing to train — the backend uses it directly. Full demo
-script: [`docs/RUNBOOK.md`](./docs/RUNBOOK.md).
-
-The manual steps below are the cross-platform equivalents.
-
-### Run backend / frontend standalone (any OS)
-
-```bash
-# backend (installs the ml package for its runtime scorer, then serves the bundled model)
-pip install -e ./ml
-pip install -r backend/requirements.txt
-cd backend && uvicorn app.main:app --reload      # http://localhost:8000/docs
-
-# frontend
-cd frontend && npm install && npm run dev         # http://localhost:5173
-```
-
-### Retraining (optional — only if you change features/data)
-
-The model is already trained and bundled. To rebuild it and refresh the bundled copy:
-
-```bash
-cd ml
-pip install -r requirements.txt                   # full training stack (adds optbinning, mlflow, ...)
-python -m msme_ml.generate --n 50000 --seed 42
-python -m msme_ml.train                           # -> ml/artifacts (prints held-out AUC-ROC)
-# then copy the new artifacts into the backend so it serves them:
-copy ml\artifacts\*.json backend\model_artifacts\    # Windows
-```
+- **A single, decisive credit score (0–100).** One model, one probability of default, one number.
+  Every score maps to a clear risk tier and a recommended action, from straight-through approval to
+  manual review.
+- **Five financial-health pillars.** Cash Flow Stability, GST Compliance & Revenue, Business
+  Stability, Credit History, and Macroeconomic Context — each scored and visualised so an
+  underwriter sees exactly where a business is strong and where it needs attention.
+- **A reason for every decision.** The top five drivers behind each score are surfaced in plain
+  language, so decisions are explainable to the borrower, the underwriter, and the regulator.
+- **A regulator-ready scorecard.** A transparent, points-based scorecard runs alongside every
+  decision as an independent, auditable view.
+- **Alternate data, fused.** GST, UPI, Account Aggregator bank data, EPFO, Udyam, bureau, and macro
+  signals are combined into one borrower profile. A power-bill upload adds electricity-consumption
+  evidence for manufacturing units.
+- **Two modes of intelligence.** Origination scores a new applicant on demand. Portfolio monitoring
+  continuously watches existing borrowers and raises early-warning alerts the moment risk shifts.
 
 ---
 
-## Definition of Done (tracked)
+## How it works
 
-- [x] Synthetic data realistic + documented (dictionary + provenance + label logic).
-- [x] Single XGBoost, no PD blend; `Score = 100·(1−PD)`; 6 tiers.
-- [x] SHAP top-5 reasons + 5 grouped sub-scores; parallel WOE scorecard.
-- [x] AUC ≥ 0.80 on held-out NTC/NTB synthetic + fairness check.
-- [x] Backend orchestrator + `/score` + OCEN endpoint + consent + append-only ledger + auth.
-- [x] Frontend 3 views + consent flow; live-score on demand (no canned data).
-- [x] Trained model bundled in the backend; CI (lint/test/build); deploy to Vercel/Render/Neon.
+1. **Consent first.** The borrower shares their identifiers (Udyam number, PAN, GSTIN) and grants
+   consent through the Account Aggregator framework — privacy and permission come before any data
+   is pulled.
+2. **Data fusion.** IDBIFin gathers the available signals in parallel and assembles them into a
+   single, unified borrower record. Missing a source is never a blocker — it is treated as
+   information in its own right.
+3. **Scoring.** A gradient-boosted model produces the probability of default and converts it into
+   the 0–100 health score and five pillar sub-scores.
+4. **Explanation.** The engine ranks the strongest positive and negative drivers and presents them
+   as clear reason codes next to the score.
+5. **Decision.** The result is delivered to the relationship manager's dashboard and is also
+   available to lending partners through a standard credit-assessment API.
 
-See [`docs/RUNBOOK.md`](./docs/RUNBOOK.md) for the full end-to-end demo script.
+The whole journey — from consent to a fully explained score — happens in seconds.
+
+---
+
+## The dashboard
+
+IDBIFin gives relationship managers and credit officers a workspace built for fast, confident
+decisions:
+
+- **Portfolio Heat Map** — every borrower as a colour-coded card, sortable and filterable, so risk
+  and opportunity across the book are visible at a glance.
+- **Borrower Drill-down** — the full health card: composite score, score trend, the five-pillar
+  radar, the reason-code breakdown, the data-source coverage, and alert history.
+- **Alert Feed** — live notifications for tier changes, score drops, and other early-warning
+  signals, each with a suggested next action.
+
+A borrower with no bureau record is not shown an empty, misleading view. The dashboard intelligently
+rebalances how it presents the pillars so credit-invisible businesses are judged on the evidence
+they do have.
+
+---
+
+## Built for trust and compliance
+
+Credit is a regulated business, and IDBIFin is designed for it from the ground up:
+
+- **Explainable by design** — every score carries its reasons, and a transparent scorecard sits
+  beside it for independent review.
+- **Consent-driven and privacy-first** — data is accessed only with the borrower's permission,
+  for a stated purpose, for a limited time.
+- **Fully auditable** — every decision is recorded with the exact data and model version used, so
+  any score can be reproduced and defended.
+- **Human-in-the-loop** — IDBIFin assists underwriters with sharper, faster insight; people stay in
+  control of the lending decision.
+
+---
+
+## Business impact
+
+- **A larger, previously unreachable market.** IDBIFin makes it possible to lend confidently to NTC
+  and NTB MSMEs that traditional scoring simply cannot assess — expanding the qualified borrower base
+  instead of turning good businesses away.
+- **Decisions in seconds, not days.** Automated data fusion and scoring collapse underwriting from a
+  multi-day manual exercise to a real-time result, cutting cost-to-serve and letting teams handle far
+  more applications.
+- **Lower risk, fewer surprises.** Continuous portfolio monitoring flags deterioration early, so
+  action can be taken before a healthy loan becomes a bad one — protecting the book and reducing
+  provisioning.
+- **Higher approval quality.** Transparent, reason-backed scores mean fewer wrongful declines of good
+  borrowers and better-justified declines of risky ones.
+- **Reusable lending infrastructure.** Because assessments are exposed through a standard API, the
+  same engine can power multiple products and partners rather than being locked to one workflow.
+- **Compliance as a feature.** Built-in explainability, consent handling, and audit trails turn
+  regulatory expectations into a competitive advantage instead of an afterthought.
+
+The outcome: more good loans, made faster, at lower risk — and credit reaching the businesses that
+drive the economy.
+
+---
+
+## Technology
+
+- **Frontend** — a fast, responsive dashboard built with React, TypeScript, and Vite, with rich
+  visualisations for scores, trends, and portfolio views.
+- **Backend** — a high-throughput Python API (FastAPI) that handles consent, data orchestration,
+  scoring, alerts, and a standards-based assessment endpoint.
+- **Intelligence** — a gradient-boosted decision model with model-driven explanations and a
+  parallel, transparent scorecard.
+- **Data** — a managed cloud Postgres database backs the consent registry, the append-only score
+  ledger, and user accounts.
+
+---
+
+© 2026 IDBI Innovate. IDBIFin — credit intelligence for every enterprise.

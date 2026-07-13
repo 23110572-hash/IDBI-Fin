@@ -1,7 +1,7 @@
 """OCEN-compliant credit-assessment endpoint for LSPs on ONDC.
 
-Treated as an UNTRUSTED-INPUT boundary: strict Pydantic validation, auth required, and (at the AWS
-edge) WAF + rate limiting. Returns an OCEN-shaped assessment. Uses the same single-model pipeline."""
+Treated as an UNTRUSTED-INPUT boundary: strict Pydantic validation and auth required. Returns an
+OCEN-shaped assessment. Uses the same single-model pipeline as /score."""
 from __future__ import annotations
 
 import uuid

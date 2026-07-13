@@ -1,8 +1,7 @@
 """Authentication & RBAC.
 
-In AWS this is AWS Cognito (OAuth2/JWT). Locally we mint/verify our own HS256 JWTs behind the same
-interface so the app runs without live AWS. Roles: admin / credit_officer / rm. No secrets in code —
-the signing key comes from settings (env), with an ephemeral per-process fallback for dev.
+Mints/verifies HS256 JWTs. Roles: admin / credit_officer / rm. No secrets in code — the signing
+key comes from settings (MSME_JWT_SECRET), with an ephemeral per-process fallback for dev.
 
 Passwords use PBKDF2-HMAC-SHA256 (stdlib) to avoid native bcrypt build friction.
 """
@@ -40,27 +39,45 @@ def _verify_password(password: str, stored: str) -> bool:
         return False
 
 
-# Dev user store (local Cognito stand-in). Credentials overridable via env; documented in README.
-# These are DEV-ONLY defaults for local sign-in, not production credentials.
-def _dev_users() -> dict[str, dict]:
-    creds = {
-        "admin": (os.environ.get("MSME_ADMIN_PASSWORD", "admin123!"), "admin"),
-        "officer": (os.environ.get("MSME_OFFICER_PASSWORD", "officer123!"), "credit_officer"),
-        "rm": (os.environ.get("MSME_RM_PASSWORD", "rm123!"), "rm"),
-    }
-    return {u: {"role": role, "password_hash": _hash_password(pw)} for u, (pw, role) in creds.items()}
-
-
-_USERS = _dev_users()
-
 ROLE_HIERARCHY = {"admin": 3, "credit_officer": 2, "rm": 1}
+VALID_ROLES = tuple(ROLE_HIERARCHY)
 
 
 def authenticate(username: str, password: str) -> dict | None:
-    user = _USERS.get(username)
-    if not user or not _verify_password(password, user["password_hash"]):
-        return None
-    return {"username": username, "role": user["role"]}
+    """Verify credentials against the users table."""
+    from sqlalchemy import select
+
+    from .db import session_scope
+    from .models import User
+
+    with session_scope() as s:
+        user = s.execute(select(User).where(User.username == username)).scalar_one_or_none()
+        if not user or not _verify_password(password, user.password_hash):
+            return None
+        return {"username": user.username, "role": user.role}
+
+
+def create_user(username: str, password: str, role: str = "rm") -> dict:
+    """Create a user. Raises ValueError on invalid input or a duplicate username."""
+    from sqlalchemy import select
+
+    from .db import session_scope
+    from .models import User
+
+    username = username.strip()
+    if len(username) < 3:
+        raise ValueError("Username must be at least 3 characters.")
+    if len(password) < 6:
+        raise ValueError("Password must be at least 6 characters.")
+    if role not in ROLE_HIERARCHY:
+        raise ValueError(f"Invalid role; choose one of: {', '.join(VALID_ROLES)}")
+
+    with session_scope() as s:
+        exists = s.execute(select(User).where(User.username == username)).scalar_one_or_none()
+        if exists:
+            raise ValueError("That username is already taken.")
+        s.add(User(username=username, password_hash=_hash_password(password), role=role))
+    return {"username": username, "role": role}
 
 
 def create_access_token(username: str, role: str) -> tuple[str, int]:
